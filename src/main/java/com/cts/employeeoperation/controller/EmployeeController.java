@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.cts.employeeoperation.config.EmployeeNotFoundException;
 import com.cts.employeeoperation.model.Employee;
 import com.cts.employeeoperation.service.EmployeeService;
 
@@ -39,7 +40,7 @@ public class EmployeeController {
 			@RequestParam("salary") long salary) {
 		Employee employee = employeeService.findById(employeeId);
 		if(employee == null) {
-			throw new RuntimeException("Employee not found");
+			throw new EmployeeNotFoundException("Employee not found");
 		}
 		employeeService.update(employeeId, salary);
 		return "Employee object Updated";
