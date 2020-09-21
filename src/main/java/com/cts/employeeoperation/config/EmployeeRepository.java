@@ -14,5 +14,7 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
 	@Modifying
     @Query("UPDATE Employee SET salary= :salary WHERE id = :employeeId")
-    int updateSalary(@Param("employeeId") long employeeId, @Param("salary") long salary);
+    public void updateSalary(@Param("employeeId") int employeeId, @Param("salary") long salary);
+	
+	public Employee findById(int id);
 }

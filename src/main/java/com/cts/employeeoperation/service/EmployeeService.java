@@ -11,7 +11,7 @@ import com.cts.employeeoperation.model.Employee;
 
 @Service
 public class EmployeeService {
-	
+
 	@Autowired
 	EmployeeRepository employeeRepository;
 
@@ -25,9 +25,13 @@ public class EmployeeService {
 		employeeRepository.save(employee);
 	}
 
-	public String update(long employeeId, long salary) {
+	public void update(int employeeId, long salary) {
 		employeeRepository.updateSalary(employeeId, salary);
-		return null;
+	}
+
+	public Employee findById(int employeeId) {
+		Employee employee = employeeRepository.findById(employeeId);
+		return employee;
 	}
 
 }
