@@ -24,19 +24,19 @@ public class EmployeeController {
 	EmployeeService employeeService;
 
 	@GetMapping("/employee")
-	public List<Employee> getValidPatient() {
+	public List<Employee> getEmployee() {
 		return employeeService.getEmployeeList();
 	}
 
 	@PostMapping("/employee-add")
-	public String savePatient(@RequestBody Employee employee) {
+	public String saveEmployee(@RequestBody Employee employee) {
 		employeeService.save(employee);
 		return "Employee object Saved";
 	}
 
 	@PutMapping("/employee-update")
 	@ResponseBody
-	public String sender(@RequestParam("employeeId") int employeeId, 
+	public String updateEmployee(@RequestParam("employeeId") int employeeId, 
 			@RequestParam("salary") long salary) {
 		Employee employee = employeeService.findById(employeeId);
 		if(employee == null) {
